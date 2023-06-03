@@ -2,12 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
-
-// const INITIAL_VALUES = {
-//   contacts: [],
-//   name: '',
-//   number: '',
-// };
+import { ContactList } from './ContactList/ContactList';
 
 export class App extends React.Component {
   state = {
@@ -18,10 +13,6 @@ export class App extends React.Component {
   onSubmit = data => {
     console.log(data);
   };
-
-  // handleSumbit = e => {
-  //   e.preventDefault();
-  // };
 
   handleInput = e => {
     const { name, value } = e.target;
@@ -77,7 +68,7 @@ export class App extends React.Component {
         }}
       >
         <h1>Phonebook</h1>
-        <ContactForm addContact={this.addContact} onInput={this.handleInput} />
+        <ContactForm addContact={this.addContact} />
 
         {/* <form onSubmit={this.handleSumbit}>
           <h1>Phonebook</h1>
@@ -120,13 +111,16 @@ export class App extends React.Component {
           onChange={this.handleInput}
           value={this.state.filter}
         /> */}
-        <ul>
+
+        {/*  */}
+        <ContactList filteredContacts={filteredContacts} />
+        {/* <ul>
           {filteredContacts.map(({ name, number, id }) => (
             <li key={id}>
               {name}: {number}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     );
   }
