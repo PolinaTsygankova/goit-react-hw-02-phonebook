@@ -1,14 +1,18 @@
-import { ContactItem } from 'components/ContactItem/ContactItem';
+import { ContactItem } from '../ContactItem/ContactItem';
 
 export function ContactList({ filteredContacts }) {
   return (
     <ul>
-      {filteredContacts.map(({ name, number, id }) => (
+      {filteredContacts.map(contact => (
         // console.log(id);
         // <li key={id}>
         //   {name}: {number}
         // </li>
-        <ContactItem name={name} number={number} id={id} />
+        <ContactItem
+          name={contact.name}
+          number={contact.number}
+          id={contact.id}
+        />
       ))}
     </ul>
   );
