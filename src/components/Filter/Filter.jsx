@@ -1,14 +1,18 @@
+import { Title, Label } from './Filter.styled';
+
 export function Filter({ filterValue, onChange }) {
   return (
     <>
-      <p>Find contacts by name</p>
-      <input
-        type="text"
-        name="filter"
-        required
-        onChange={onChange}
-        value={filterValue}
-      />
+      <Title>Find contacts by name</Title>
+      <Label>
+        <input
+          type="text"
+          name="filter"
+          required
+          onChange={onChange}
+          value={filterValue}
+        />
+      </Label>
     </>
   );
 }

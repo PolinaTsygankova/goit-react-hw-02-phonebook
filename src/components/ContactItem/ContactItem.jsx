@@ -1,8 +1,18 @@
-export function ContactItem({ name, number, id, onRender }) {
-  console.log(onRender());
+import { Item, DeleteBtn, Text } from './ContactItem.styled';
+
+export function ContactItem({ name, number, id, onDelete }) {
   return (
-    <li key={id}>
-      {name}: {number}
-    </li>
+    <>
+      <Item key={id}>
+        <div>
+          <Text>{name}: </Text>
+          <Text> {number}</Text>
+        </div>
+
+        <DeleteBtn type="button" onClick={() => onDelete(id)}>
+          Delete
+        </DeleteBtn>
+      </Item>
+    </>
   );
 }

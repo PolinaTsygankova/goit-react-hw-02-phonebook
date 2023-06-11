@@ -1,27 +1,29 @@
-import { ContactItem } from '../ContactItem/ContactItem';
 import React from 'react';
+import { ContactItem } from '../ContactItem/ContactItem';
 
-export function ContactList({ filteredContacts }) {
+import { List } from './ContactList.styled';
+
+export function ContactList({ filteredContacts, onDelete }) {
   return (
-    <ul>
+    <List>
       {filteredContacts.map(({ name, number, id }) => (
         <ContactItem
           key={id}
           name={name}
           number={number}
           id={id}
-          onRender={() => onRender(name, filteredContacts)}
+          onDelete={onDelete}
         />
       ))}
-    </ul>
+    </List>
   );
 }
 
-function onRender(name, filteredContacts) {
-  const allNames = filteredContacts.map(item => item.name.toLowerCase());
+// function onRender(name, filteredContacts) {
+//   const allNames = filteredContacts.map(item => item.name.toLowerCase());
 
-  return allNames.includes(name.toLowerCase());
-}
+//   return allNames.includes(name.toLowerCase());
+// }
 
 // export class ContactList extends React.Component {
 // onRender = name => {
