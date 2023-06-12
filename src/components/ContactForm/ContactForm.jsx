@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Label, Text, Submitbtn } from './ContactForm.styled';
 
 export class ContactForm extends React.Component {
@@ -15,7 +16,6 @@ export class ContactForm extends React.Component {
   handleSumbit = e => {
     e.preventDefault();
 
-    // this.addContact(this.state.name, this.state.number);
     this.props.addContact({ name: this.state.name, number: this.state.number });
 
     this.setState({ name: '' });
@@ -23,7 +23,6 @@ export class ContactForm extends React.Component {
   };
 
   render() {
-    // console.log(handleInputFromProps);
     return (
       <form onSubmit={this.handleSumbit}>
         <Text>Name</Text>
@@ -57,3 +56,7 @@ export class ContactForm extends React.Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+};
