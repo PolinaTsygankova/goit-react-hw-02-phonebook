@@ -12,10 +12,6 @@ export class App extends React.Component {
     filter: '',
   };
 
-  onSubmit = data => {
-    console.log(data);
-  };
-
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -29,15 +25,14 @@ export class App extends React.Component {
 
   addContact = ({ name, number }) => {
     const allContacts = this.state.contacts;
-    let contactExists;
+    const contactExists = allContacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
 
-    allContacts.forEach(contact => {
-      if (contact.name.toLowerCase() === name.toLowerCase()) {
-        contactExists = true;
-        alert(`${name} is already in contacts`);
-        return;
-      }
-    });
+    if (contactExists) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
 
     if (!contactExists) {
       this.setState(prevState => ({
